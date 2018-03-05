@@ -1,0 +1,125 @@
+<div style="margin: 15px;">
+	<form class="layui-form">
+        <input type="text" name="id" hidden="hidden" value="${item.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">平台名称</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.name!"" }">
+            </div>
+        </div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">平台简称</label>
+            <div class="layui-input-block">
+            	<input type="text" disabled="disabled" class="layui-input" value="${item.shortName!"" }">
+			</div>
+		</div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">应用编号</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.appId!"" }">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商户编号</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.merchId!"" }">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商户私钥（密钥）</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.merchKey!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">商户公钥</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.merchPublicKey!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">拓展参数(JSON格式)：如微信公众号appId,子商户ID</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.expandParams!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">支付类型</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.payType!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">通道费率</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.merchRate!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">当前累额</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.totalMoney!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单笔限额</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.singleQuota!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">总额限额</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.totalQuota!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">异步回调地址</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.notifyUrl!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">支付成功跳转页面</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.returnUrl!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">支付失败跳转页面</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.cancelUrl!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">描述</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.depict!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.remark!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">平台状态</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="<#if item.status == 0>冻结</#if><#if item.status == 1>正常</#if><#if item.status == 2>停用</#if>">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建时间</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${(item.createTime?datetime)!}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">更新时间</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${(item.updateTime?datetime)!}">
+            </div>
+        </div>
+	</form>
+</div>

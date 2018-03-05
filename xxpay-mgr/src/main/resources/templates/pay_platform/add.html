@@ -1,0 +1,117 @@
+<div style="margin: 15px;">
+	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">平台名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="name" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">平台简称</label>
+			<div class="layui-input-block">
+				<input type="text" name="shortName" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">应用编号</label>
+			<div class="layui-input-block">
+				<input type="text" name="appId" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">商户编号</label>
+			<div class="layui-input-block">
+				<input type="text" name="merchId" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">商户私钥（密钥）</label>
+			<div class="layui-input-block">
+				<input type="text" name="merchKey" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">商户公钥</label>
+			<div class="layui-input-block">
+				<input type="text" name="merchPublicKey" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">拓展参数(JSON格式)：如微信公众号appId,子商户ID</label>
+			<div class="layui-input-block">
+				<input type="text" name="expandParams" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">支付类型</label>
+			<div class="layui-input-block">
+				<input type="text" name="payType" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">通道费率</label>
+			<div class="layui-input-block">
+				<input type="text" name="merchRate" lay-verify="required" class="layui-input" value="0">
+			</div>
+		</div>
+		<div class="layui-form-item" style="display: none;">
+			<label class="layui-form-label">当前累额</label>
+			<div class="layui-input-block">
+				<input type="text" name="totalMoney" lay-verify="required" disabled="disabled" class="layui-input" value="0">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">单笔限额</label>
+			<div class="layui-input-block">
+				<input type="text" name="singleQuota" lay-verify="required" class="layui-input" value="0">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">总额限额</label>
+			<div class="layui-input-block">
+				<input type="text" name="totalQuota" lay-verify="required" class="layui-input" value="0">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">异步回调地址</label>
+			<div class="layui-input-block">
+				<input type="text" name="notifyUrl" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">支付成功跳转页面</label>
+			<div class="layui-input-block">
+				<input type="text" name="returnUrl" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">支付失败跳转页面</label>
+			<div class="layui-input-block">
+				<input type="text" name="cancelUrl" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">描述</label>
+			<div class="layui-input-block">
+				<input type="text" name="depict" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">备注</label>
+			<div class="layui-input-block">
+				<input type="text" name="remark" lay-verify="required" class="layui-input" value="">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">平台状态</label>
+			<div class="layui-input-block">
+				<select name="status" lay-verify="required">
+					<option value="0">冻结</option>
+					<option value="1" selected="selected">正常</option>
+					<option value="2">停用</option>
+				</select>
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

@@ -1,0 +1,56 @@
+package org.xxpay.mgr.controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.xxpay.mgr.service.MchInfoService;
+
+@Controller
+@RequestMapping()
+public class MchLoginController {
+
+	@Autowired
+	private MchInfoService mchInfoService;
+
+	@RequestMapping(value = "/login.html")
+	public String login_html() {
+		return "login";
+	}
+
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request, Map<String, Object> map)throws Exception {
+		String exception = (String) request.getAttribute("shiroLoginFailure");
+		String msg = "";
+		if (exception != null) {
+			if (UnknownAccountException.class.getName().equals(exception)) {
+				msg = "UnknownAccountException -- > 账号不存在：";
+			} else if (IncorrectCredentialsException.class.getName().equals(exception)) {
+				msg = "IncorrectCredentialsException -- > 密码不正确：";
+			} else if ("kaptchaValidateFailed".equals(exception)) {
+				msg = "kaptchaValidateFailed -- > 验证码错误";
+			} else {
+				msg = "else >> " + exception;
+			}
+			map.put("msg", msg);
+			return "index";
+		}
+		return "index";
+	}
+
+	/**
+	 * 无权限
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/403")
+	public String unauthorized() {
+		return "403";
+	}
+
+}

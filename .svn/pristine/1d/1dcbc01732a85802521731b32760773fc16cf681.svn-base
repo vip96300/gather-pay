@@ -1,0 +1,37 @@
+package org.xxpay.dal.dao.mapper;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.xxpay.dal.dao.model.MchCash;
+import org.xxpay.dal.dao.model.MchCashExample;
+
+public interface MchCashMapper {
+    long countByExample(MchCashExample example);
+
+    int deleteByExample(MchCashExample example);
+
+    int deleteByPrimaryKey(String cashId);
+
+    int insert(MchCash record);
+
+    int insertSelective(MchCash record);
+
+    List<MchCash> selectByExample(MchCashExample example);
+
+    MchCash selectByPrimaryKey(String cashId);
+
+    int updateByExampleSelective(@Param("record") MchCash record, @Param("example") MchCashExample example);
+
+    int updateByExample(@Param("record") MchCash record, @Param("example") MchCashExample example);
+
+    int updateByPrimaryKeySelective(MchCash record);
+
+    int updateByPrimaryKey(MchCash record);
+
+    @Select("select count(*) from t_mch_cash o where o.mchId=#{mchId}")
+    long countByMchId(@Param("mchId")String mchId);
+
+    @Select("select * from t_mch_cash o where o.mchId=#{mchId} order by o.createTime desc limit #{begin},#{size}")
+    List<MchCash> listByMchId(@Param("mchId") String mchId,@Param("begin")int begin,@Param("size")int size);
+}

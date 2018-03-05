@@ -1,0 +1,54 @@
+package org.xxpay.mgr.service;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+import org.xxpay.dal.dao.mapper.MchCardMapper;
+import org.xxpay.dal.dao.model.MchCard;
+import org.xxpay.dal.dao.model.MchCardExample;
+
+import java.util.List;
+
+/**
+ * @Author huanghongfei
+ * @Description
+ * @Date Create in 17:50 2018/3/2
+ */
+@Service
+public class MchCardService {
+
+    @Autowired
+    private MchCardMapper mchCardMapper;
+
+    public long count(MchCard mchCard){
+        MchCardExample example = new MchCardExample();
+        MchCardExample.Criteria criteria = example.createCriteria();
+        setCriteria(criteria, mchCard);
+        return mchCardMapper.countByExample(example);
+    }
+
+    public List<MchCard> list(MchCard mchCard, int page, int size){
+        MchCardExample example = new MchCardExample();
+        example.setOrderByClause("createTime DESC");
+        example.setOffset((page-1)*size);
+        example.setLimit(size);
+        MchCardExample.Criteria criteria = example.createCriteria();
+        setCriteria(criteria, mchCard);
+        return mchCardMapper.selectByExample(example);
+    }
+
+    void setCriteria(MchCardExample.Criteria criteria, MchCard mchCard) {
+        if(mchCard != null) {
+            if(StringUtils.isNotBlank(mchCard.getMchId()))criteria.andMchIdEqualTo(mchCard.getMchId());criteria.andIsDelEqualTo(0);
+            if(mchCard.getBankNo() != null && !"-99".equals(mchCard.getBankNo())) criteria.andBankNoEqualTo(mchCard.getBankNo());
+        }
+    }
+
+    @Async
+    public void delete(String cardId){
+        MchCard mchCard=mchCardMapper.selectByPrimaryKey(cardId);
+        mchCard.setIsDel(1);
+        mchCardMapper.updateByPrimaryKey(mchCard);
+    }
+}

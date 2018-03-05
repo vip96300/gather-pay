@@ -1,0 +1,77 @@
+package org.xxpay.mgr.controller;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.xxpay.dal.dao.model.MchInfo;
+import org.xxpay.mgr.service.MchInfoService;
+
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+@RequestMapping()
+public class MchLoginController {
+
+    private static final Logger log = LoggerFactory.getLogger(MchLoginController.class);
+
+    @Autowired
+    private MchInfoService mchInfoService;
+
+    @GetMapping(value = {"/","/login","/index"})
+    public String index(){
+        Subject subject = SecurityUtils.getSubject();
+        return subject.getPrincipal()==null?"/login":"/index";
+    }
+
+    @PostMapping(value={"/login"})
+    public String login(HttpServletRequest request, ModelMap model) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String rememberMe = request.getParameter("rememberMe");
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        token.setRememberMe(rememberMe != null);
+        Subject subject = SecurityUtils.getSubject();
+        String msg = null;
+        try {
+            subject.login(token);
+            MchInfo mchInfo=mchInfoService.getByUsername(subject.getPrincipal().toString());
+            request.getSession().setAttribute("mchInfo", mchInfo);
+            return "redirect:index";
+        } catch (UnknownAccountException e) {
+            msg = "账户不存在！";
+        } catch (IncorrectCredentialsException e) {
+            msg = "密码错误！";
+        } catch (LockedAccountException e) {
+            msg = "您的账户已被锁定,请与管理员联系！";
+        } catch (ExcessiveAttemptsException e) {
+            msg = "登录失败次数过多,请稍后再试！";
+        } catch (Exception e) {
+            msg = "系统发生错误，请联系管理员！";
+        }
+        model.put("msg", msg);
+        return "redirect:login";
+    }
+    
+    @GetMapping(value="/main.html")
+    public String main_html(){
+    	return "/main";
+    }
+    /**
+     * 无权限
+     *
+     * @return
+     */
+    @RequestMapping("/403")
+    public String unauthorized() {
+        return "/403";
+    }
+
+}

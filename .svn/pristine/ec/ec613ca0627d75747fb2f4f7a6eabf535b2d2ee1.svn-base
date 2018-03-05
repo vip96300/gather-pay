@@ -1,0 +1,28 @@
+package org.xxpay.mgr.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.xxpay.dal.dao.mapper.MchCashMapper;
+import org.xxpay.dal.dao.model.MchCash;
+
+import java.util.List;
+
+/**
+ * @Author huanghongfei
+ * @Description
+ * @Date Create in 17:50 2018/3/2
+ */
+@Service
+public class MchCashService {
+
+    @Autowired
+    private MchCashMapper mchCashMapper;
+
+    public long countByMchId(String mchId){
+        return mchCashMapper.countByMchId(mchId);
+    }
+
+    public List<MchCash> listByMchId(String mchId,int page,int size){
+        return mchCashMapper.listByMchId(mchId,page==1?0:(page-1)*size, size);
+    }
+}

@@ -1,0 +1,29 @@
+package org.xxpay.mgr.utils;
+
+import org.apache.shiro.crypto.hash.Md5Hash;
+
+public class EncryptUtils {
+
+    /**
+     * 对密码进行md5加密,并返回密文和salt，包含在User对象中
+     *
+     * @param username       用户名
+     * @param password       密码
+     * @Param salt           盐
+     * @param hashIterations 迭代次数
+     * @return array[0]=密文  array=[1]=salt
+     */
+    public static String md5Password(String username, String password,String salt, int hashIterations) {
+        String passwordCrypt = new Md5Hash(password, username + salt, hashIterations).toString();
+        return passwordCrypt;
+    }
+
+    public static void main(String[] args) {
+        String username="admin";
+        String password="123456";
+        String salt="123456";
+        String passwordCrypt= md5Password(username, password, salt,1);
+        System.out.println(passwordCrypt);
+    }
+
+}

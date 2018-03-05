@@ -1,0 +1,267 @@
+package org.xxpay.dal.dao.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class PayPlatform implements Serializable {
+    /**
+     * 编号
+     *
+     * @mbg.generated
+     */
+    private Integer id;
+
+    /**
+     * 平台名称
+     *
+     * @mbg.generated
+     */
+    private String name;
+
+    /**
+     * 应用编号
+     *
+     * @mbg.generated
+     */
+    private String app_id;
+
+    /**
+     * 商户编号
+     *
+     * @mbg.generated
+     */
+    private String merch_id;
+
+    /**
+     * 商户私钥（密钥）
+     *
+     * @mbg.generated
+     */
+    private String merch_key;
+
+    /**
+     * 商户公钥
+     *
+     * @mbg.generated
+     */
+    private String merch_public_key;
+
+    /**
+     * 拓展参数(JSON格式)：如微信公众号appId,子商户ID
+     *
+     * @mbg.generated
+     */
+    private String expand_params;
+
+    /**
+     * 异步回调地址
+     *
+     * @mbg.generated
+     */
+    private String notify_url;
+
+    /**
+     * 支付成功跳转页面
+     *
+     * @mbg.generated
+     */
+    private String return_url;
+
+    /**
+     * 支付失败跳转页面
+     *
+     * @mbg.generated
+     */
+    private String cancel_url;
+
+    /**
+     * 平台备注
+     *
+     * @mbg.generated
+     */
+    private String remark;
+
+    /**
+     * 平台状态 0 停用 1 正常
+     *
+     * @mbg.generated
+     */
+    private Integer status;
+
+    /**
+     * 修改时间
+     *
+     * @mbg.generated
+     */
+    private Date update_time;
+
+    /**
+     * 创建时间
+     *
+     * @mbg.generated
+     */
+    private Date create_time;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getApp_id() {
+        return app_id;
+    }
+
+    public void setApp_id(String app_id) {
+        this.app_id = app_id;
+    }
+
+    public String getMerch_id() {
+        return merch_id;
+    }
+
+    public void setMerch_id(String merch_id) {
+        this.merch_id = merch_id;
+    }
+
+    public String getMerch_key() {
+        return merch_key;
+    }
+
+    public void setMerch_key(String merch_key) {
+        this.merch_key = merch_key;
+    }
+
+    public String getMerch_public_key() {
+        return merch_public_key;
+    }
+
+    public void setMerch_public_key(String merch_public_key) {
+        this.merch_public_key = merch_public_key;
+    }
+
+    public String getExpand_params() {
+        return expand_params;
+    }
+
+    public void setExpand_params(String expand_params) {
+        this.expand_params = expand_params;
+    }
+
+    public String getNotify_url() {
+        return notify_url;
+    }
+
+    public void setNotify_url(String notify_url) {
+        this.notify_url = notify_url;
+    }
+
+    public String getReturn_url() {
+        return return_url;
+    }
+
+    public void setReturn_url(String return_url) {
+        this.return_url = return_url;
+    }
+
+    public String getCancel_url() {
+        return cancel_url;
+    }
+
+    public void setCancel_url(String cancel_url) {
+        this.cancel_url = cancel_url;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        PayPlatform other = (PayPlatform) that;
+        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getApp_id() == null ? other.getApp_id() == null : this.getApp_id().equals(other.getApp_id()))
+            && (this.getMerch_id() == null ? other.getMerch_id() == null : this.getMerch_id().equals(other.getMerch_id()))
+            && (this.getMerch_key() == null ? other.getMerch_key() == null : this.getMerch_key().equals(other.getMerch_key()))
+            && (this.getMerch_public_key() == null ? other.getMerch_public_key() == null : this.getMerch_public_key().equals(other.getMerch_public_key()))
+            && (this.getExpand_params() == null ? other.getExpand_params() == null : this.getExpand_params().equals(other.getExpand_params()))
+            && (this.getNotify_url() == null ? other.getNotify_url() == null : this.getNotify_url().equals(other.getNotify_url()))
+            && (this.getReturn_url() == null ? other.getReturn_url() == null : this.getReturn_url().equals(other.getReturn_url()))
+            && (this.getCancel_url() == null ? other.getCancel_url() == null : this.getCancel_url().equals(other.getCancel_url()))
+            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getUpdate_time() == null ? other.getUpdate_time() == null : this.getUpdate_time().equals(other.getUpdate_time()))
+            && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getApp_id() == null) ? 0 : getApp_id().hashCode());
+        result = prime * result + ((getMerch_id() == null) ? 0 : getMerch_id().hashCode());
+        result = prime * result + ((getMerch_key() == null) ? 0 : getMerch_key().hashCode());
+        result = prime * result + ((getMerch_public_key() == null) ? 0 : getMerch_public_key().hashCode());
+        result = prime * result + ((getExpand_params() == null) ? 0 : getExpand_params().hashCode());
+        result = prime * result + ((getNotify_url() == null) ? 0 : getNotify_url().hashCode());
+        result = prime * result + ((getReturn_url() == null) ? 0 : getReturn_url().hashCode());
+        result = prime * result + ((getCancel_url() == null) ? 0 : getCancel_url().hashCode());
+        result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        result = prime * result + ((getUpdate_time() == null) ? 0 : getUpdate_time().hashCode());
+        result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
+        return result;
+    }
+}

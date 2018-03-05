@@ -1,0 +1,117 @@
+<div style="margin: 2px;">
+	<div class="layui-side" style="position: absolute;margin:2px 0px 0 2px; width: 160px;">
+        <div class="layui-side-scroll" lay-filter="side" style="width: 160px; background-color: #F8F8F8;">
+            <ul class="layui-nav layui-nav-tree beg-navbar" style="width: 160px; background-color: #F8F8F8;">
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        商户信息
+                    </a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        安全设置</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        商户款项</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        费率信息</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        提现账号</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        通道设置</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        订单查询</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        操作日志</a>
+                </li>
+                <li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+                    <a href="javascript:;" style="color: black; height: 35px;">
+                        <i class="layui-icon"></i>
+                        收益明细</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+	<div class="layui-body" style="border: 1px solid lightgray; border-radius: 5px; margin:2px 2px 0 5px;
+	left: 160px;" >
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户ID</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" disabled="disabled" value="${item.mchId?if_exists }">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户名称</label>
+                <div class="layui-input-block">
+                    <input type="text" disabled="disabled" class="layui-input" value="${item.name?if_exists }">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商户类型</label>
+                <div class="layui-input-block">
+                <#if item.type = "1">
+                    <input type="text" disabled="disabled" class="layui-input" value="平台账户" }">
+                <#elseif item.type = "2">
+                    <input type="text" disabled="disabled" class="layui-input" value="私有账户" }">
+                <#else>
+                </#if>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                <#if item.state = 1>
+                    <input type="text" style="color: green" disabled="disabled" class="layui-input" value="启用" }">
+                <#else>
+                    <input type="text" style="color: red" disabled="disabled" class="layui-input" value="停止" }">
+                </#if>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">请求私钥</label>
+                <div class="layui-input-block">
+                    <textarea disabled="disabled" class="layui-textarea">${item.reqKey!"" }</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">响应私钥</label>
+                <div class="layui-input-block">
+                    <textarea disabled="disabled" class="layui-textarea">${item.resKey!"" }</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">创建时间</label>
+                <div class="layui-input-block">
+                    <input type="text" disabled="disabled" class="layui-input" value="${(item.createTime?string("yyyy-MM-dd HH:mm:ss"))!''} ">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">更新时间</label>
+                <div class="layui-input-block">
+                    <input type="text" disabled="disabled" class="layui-input" value="${(item.updateTime?string("yyyy-MM-dd HH:mm:ss"))!''} ">
+                </div>
+            </div>
+            <button lay-filter="edit" lay-submit style="display: none;"></button>
+        </form>
+    </div>
+</div>

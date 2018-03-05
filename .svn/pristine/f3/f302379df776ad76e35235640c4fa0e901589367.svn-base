@@ -1,0 +1,94 @@
+<div style="margin: 2px;">
+	<div class="layui-side" style="position: absolute;margin:2px 0px 0 2px; width: 160px;">
+		<div class="layui-side-scroll" lay-filter="side" style="width: 160px; background-color: #F8F8F8;">
+			<ul class="layui-nav layui-nav-tree beg-navbar" style="width: 160px; background-color: #F8F8F8;">
+				<li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+					<a href="javascript:;" style="color: black; height: 35px;">
+						<i class="layui-icon"></i>
+						银行名称
+					</a>
+				</li>
+				<li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+					<a href="javascript:;" style="color: black; height: 35px;">
+						<i class="layui-icon"></i>
+						卡号</a>
+				</li>
+				<li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+					<a href="javascript:;" style="color: black; height: 35px;">
+						<i class="layui-icon"></i>
+						姓名</a>
+				</li>
+				<li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+					<a href="javascript:;" style="color: black; height: 35px;">
+						<i class="layui-icon"></i>
+						身份证号</a>
+				</li>
+				<li class="layui-nav-item" style="text-align: center; line-height: 35px;">
+					<a href="javascript:;" style="color: black; height: 35px;">
+						<i class="layui-icon"></i>
+						预留手机号</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="layui-body" style="border: 1px solid lightgray; border-radius: 5px; margin:2px 2px 0 5px;
+	left: 160px;" >
+	<form class="layui-form">
+		<#if (item.mchId!"") != "">
+		<div class="layui-form-item">
+			<label class="layui-form-label">商户ID</label>
+			<div class="layui-input-block">
+				<input type="text" name="mchId" placeholder="请输入商户ID" autocomplete="off" class="layui-input"  readonly="readonly" value="${item.mchId?if_exists }">
+			</div>
+		</div>
+		</#if>
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" lay-verify="required" placeholder="请输入登录名称" autocomplete="off" class="layui-input" value="${item.username?if_exists }">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录密码</label>
+            <div class="layui-input-block">
+                <input type="text" name="password" lay-verify="required" placeholder="请输入登录密码" autocomplete="off" class="layui-input" value="${item.password?if_exists }">
+            </div>
+        </div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">商户名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="name" lay-verify="required" placeholder="请输入商户名称" autocomplete="off" class="layui-input" value="${item.name?if_exists }">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">商户类型</label>
+			<div class="layui-input-block">
+				<select name="type" lay-verify="required">
+					<option value=""></option>
+                    <option value="1" <#if (item.type!"") == "1">selected="selected"</#if>>平台账户</option>
+                    <option value="2" <#if (item.type!"") == "2">selected="selected"</#if>>私有账户</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否启用</label>
+			<div class="layui-input-block">
+				<input type="checkbox" name="state" lay-skin="switch" <#if (item.state!1) == 1>checked="checked"</#if> >
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">请求私钥</label>
+			<div class="layui-input-block">
+				<textarea name="reqKey" placeholder="请输入商户请求私钥" lay-verify="required" class="layui-textarea">${item.reqKey?if_exists }</textarea>
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">响应私钥</label>
+			<div class="layui-input-block">
+				<textarea name="resKey" placeholder="请输入商户响应私钥" lay-verify="required" class="layui-textarea">${item.resKey?if_exists }</textarea>
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>
+</div>

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.xxpay.dal.dao.mapper.PayPlatformMapper">
+  <resultMap id="BaseResultMap" type="org.xxpay.dal.dao.model.PayPlatform">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="merch_id" jdbcType="VARCHAR" property="merchId" />
+    <result column="merch_key" jdbcType="VARCHAR" property="merchKey" />
+    <result column="merch_public_key" jdbcType="VARCHAR" property="merchPublicKey" />
+    <result column="expand_params" jdbcType="VARCHAR" property="expandParams" />
+    <result column="pay_type" jdbcType="CHAR" property="payType" />
+    <result column="merch_rate" jdbcType="DOUBLE" property="merchRate" />
+    <result column="total_money" jdbcType="BIGINT" property="totalMoney" />
+    <result column="single_quota" jdbcType="BIGINT" property="singleQuota" />
+    <result column="total_quota" jdbcType="BIGINT" property="totalQuota" />
+    <result column="notify_url" jdbcType="VARCHAR" property="notifyUrl" />
+    <result column="return_url" jdbcType="VARCHAR" property="returnUrl" />
+    <result column="cancel_url" jdbcType="VARCHAR" property="cancelUrl" />
+    <result column="depict" jdbcType="VARCHAR" property="depict" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, short_name, app_id, merch_id, merch_key, merch_public_key, expand_params, 
+    pay_type, merch_rate, total_money, single_quota, total_quota, notify_url, return_url, 
+    cancel_url, depict, remark, status, update_time, create_time
+  </sql>
+  <select id="selectByExample" parameterType="org.xxpay.dal.dao.model.PayPlatformExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_pay_platform
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pay_platform
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_pay_platform
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.xxpay.dal.dao.model.PayPlatformExample">
+    delete from t_pay_platform
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.xxpay.dal.dao.model.PayPlatform">
+    insert into t_pay_platform (id, name, short_name, 
+      app_id, merch_id, merch_key, 
+      merch_public_key, expand_params, pay_type, 
+      merch_rate, total_money, single_quota, 
+      total_quota, notify_url, return_url, 
+      cancel_url, depict, remark, 
+      status, update_time, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, 
+      #{appId,jdbcType=VARCHAR}, #{merchId,jdbcType=VARCHAR}, #{merchKey,jdbcType=VARCHAR}, 
+      #{merchPublicKey,jdbcType=VARCHAR}, #{expandParams,jdbcType=VARCHAR}, #{payType,jdbcType=CHAR}, 
+      #{merchRate,jdbcType=DOUBLE}, #{totalMoney,jdbcType=BIGINT}, #{singleQuota,jdbcType=BIGINT}, 
+      #{totalQuota,jdbcType=BIGINT}, #{notifyUrl,jdbcType=VARCHAR}, #{returnUrl,jdbcType=VARCHAR}, 
+      #{cancelUrl,jdbcType=VARCHAR}, #{depict,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.xxpay.dal.dao.model.PayPlatform">
+    insert into t_pay_platform
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="shortName != null">
+        short_name,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="merchId != null">
+        merch_id,
+      </if>
+      <if test="merchKey != null">
+        merch_key,
+      </if>
+      <if test="merchPublicKey != null">
+        merch_public_key,
+      </if>
+      <if test="expandParams != null">
+        expand_params,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="merchRate != null">
+        merch_rate,
+      </if>
+      <if test="totalMoney != null">
+        total_money,
+      </if>
+      <if test="singleQuota != null">
+        single_quota,
+      </if>
+      <if test="totalQuota != null">
+        total_quota,
+      </if>
+      <if test="notifyUrl != null">
+        notify_url,
+      </if>
+      <if test="returnUrl != null">
+        return_url,
+      </if>
+      <if test="cancelUrl != null">
+        cancel_url,
+      </if>
+      <if test="depict != null">
+        depict,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchId != null">
+        #{merchId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchKey != null">
+        #{merchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="merchPublicKey != null">
+        #{merchPublicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="expandParams != null">
+        #{expandParams,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=CHAR},
+      </if>
+      <if test="merchRate != null">
+        #{merchRate,jdbcType=DOUBLE},
+      </if>
+      <if test="totalMoney != null">
+        #{totalMoney,jdbcType=BIGINT},
+      </if>
+      <if test="singleQuota != null">
+        #{singleQuota,jdbcType=BIGINT},
+      </if>
+      <if test="totalQuota != null">
+        #{totalQuota,jdbcType=BIGINT},
+      </if>
+      <if test="notifyUrl != null">
+        #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="returnUrl != null">
+        #{returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelUrl != null">
+        #{cancelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="depict != null">
+        #{depict,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.xxpay.dal.dao.model.PayPlatformExample" resultType="java.lang.Long">
+    select count(*) from t_pay_platform
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_pay_platform
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shortName != null">
+        short_name = #{record.shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appId != null">
+        app_id = #{record.appId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchId != null">
+        merch_id = #{record.merchId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchKey != null">
+        merch_key = #{record.merchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchPublicKey != null">
+        merch_public_key = #{record.merchPublicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expandParams != null">
+        expand_params = #{record.expandParams,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payType != null">
+        pay_type = #{record.payType,jdbcType=CHAR},
+      </if>
+      <if test="record.merchRate != null">
+        merch_rate = #{record.merchRate,jdbcType=DOUBLE},
+      </if>
+      <if test="record.totalMoney != null">
+        total_money = #{record.totalMoney,jdbcType=BIGINT},
+      </if>
+      <if test="record.singleQuota != null">
+        single_quota = #{record.singleQuota,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalQuota != null">
+        total_quota = #{record.totalQuota,jdbcType=BIGINT},
+      </if>
+      <if test="record.notifyUrl != null">
+        notify_url = #{record.notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.returnUrl != null">
+        return_url = #{record.returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cancelUrl != null">
+        cancel_url = #{record.cancelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depict != null">
+        depict = #{record.depict,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_pay_platform
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      short_name = #{record.shortName,jdbcType=VARCHAR},
+      app_id = #{record.appId,jdbcType=VARCHAR},
+      merch_id = #{record.merchId,jdbcType=VARCHAR},
+      merch_key = #{record.merchKey,jdbcType=VARCHAR},
+      merch_public_key = #{record.merchPublicKey,jdbcType=VARCHAR},
+      expand_params = #{record.expandParams,jdbcType=VARCHAR},
+      pay_type = #{record.payType,jdbcType=CHAR},
+      merch_rate = #{record.merchRate,jdbcType=DOUBLE},
+      total_money = #{record.totalMoney,jdbcType=BIGINT},
+      single_quota = #{record.singleQuota,jdbcType=BIGINT},
+      total_quota = #{record.totalQuota,jdbcType=BIGINT},
+      notify_url = #{record.notifyUrl,jdbcType=VARCHAR},
+      return_url = #{record.returnUrl,jdbcType=VARCHAR},
+      cancel_url = #{record.cancelUrl,jdbcType=VARCHAR},
+      depict = #{record.depict,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.xxpay.dal.dao.model.PayPlatform">
+    update t_pay_platform
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchId != null">
+        merch_id = #{merchId,jdbcType=VARCHAR},
+      </if>
+      <if test="merchKey != null">
+        merch_key = #{merchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="merchPublicKey != null">
+        merch_public_key = #{merchPublicKey,jdbcType=VARCHAR},
+      </if>
+      <if test="expandParams != null">
+        expand_params = #{expandParams,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=CHAR},
+      </if>
+      <if test="merchRate != null">
+        merch_rate = #{merchRate,jdbcType=DOUBLE},
+      </if>
+      <if test="totalMoney != null">
+        total_money = #{totalMoney,jdbcType=BIGINT},
+      </if>
+      <if test="singleQuota != null">
+        single_quota = #{singleQuota,jdbcType=BIGINT},
+      </if>
+      <if test="totalQuota != null">
+        total_quota = #{totalQuota,jdbcType=BIGINT},
+      </if>
+      <if test="notifyUrl != null">
+        notify_url = #{notifyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="returnUrl != null">
+        return_url = #{returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelUrl != null">
+        cancel_url = #{cancelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="depict != null">
+        depict = #{depict,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.xxpay.dal.dao.model.PayPlatform">
+    update t_pay_platform
+    set name = #{name,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      app_id = #{appId,jdbcType=VARCHAR},
+      merch_id = #{merchId,jdbcType=VARCHAR},
+      merch_key = #{merchKey,jdbcType=VARCHAR},
+      merch_public_key = #{merchPublicKey,jdbcType=VARCHAR},
+      expand_params = #{expandParams,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=CHAR},
+      merch_rate = #{merchRate,jdbcType=DOUBLE},
+      total_money = #{totalMoney,jdbcType=BIGINT},
+      single_quota = #{singleQuota,jdbcType=BIGINT},
+      total_quota = #{totalQuota,jdbcType=BIGINT},
+      notify_url = #{notifyUrl,jdbcType=VARCHAR},
+      return_url = #{returnUrl,jdbcType=VARCHAR},
+      cancel_url = #{cancelUrl,jdbcType=VARCHAR},
+      depict = #{depict,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

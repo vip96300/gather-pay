@@ -1,0 +1,9 @@
+package org.xxpay.mgr.controller;
+
+/**
+ * @Author huanghongfei
+ * @Description
+ * @Date Create in 16:58 2018/3/3
+ */
+public class PayPlatformController {
+}

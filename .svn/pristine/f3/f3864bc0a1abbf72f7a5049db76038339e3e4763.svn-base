@@ -1,0 +1,5 @@
+generator.jdbc.driver=com.mysql.jdbc.Driver
+rator.jdbc.url=jdbc:mysql://rm-wz90410c1rsx205s2bo.mysql.rds.aliyuncs.com:3306/gather-pay?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+generator.jdbc.username=root
+generator.jdbc.password=s9s4ohDZdkQv5Pex
+classPathEntry=E:/environment/apache/maven/repo/mysql/mysql-connector-java/5.1.28/mysql-connector-java-5.1.28.jar

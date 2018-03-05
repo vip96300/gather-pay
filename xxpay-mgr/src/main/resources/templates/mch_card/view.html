@@ -1,0 +1,46 @@
+<div style="margin: 15px;">
+	<form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">银行名称</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.bankName!"" }">
+            </div>
+        </div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">银行卡号</label>
+            <div class="layui-input-block">
+            	<input type="text" disabled="disabled" class="layui-input" value="${item.bankNo!"" }">
+			</div>
+		</div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.userName!"" }">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.idNo!"" }">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">预留手机号</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.mobile!""}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建时间</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.createTime?datetime!}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">更新时间</label>
+            <div class="layui-input-block">
+                <input type="text" disabled="disabled" class="layui-input" value="${item.updateTime?datetime!}">
+            </div>
+        </div>
+	</form>
+</div>

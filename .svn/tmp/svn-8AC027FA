@@ -1,0 +1,148 @@
+package org.xxpay.dal.dao.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class PayConfig implements Serializable {
+    /**
+     * 配置键
+     *
+     * @mbg.generated
+     */
+    private String code;
+
+    /**
+     * 配置名
+     *
+     * @mbg.generated
+     */
+    private String name;
+
+    /**
+     * 配置值
+     *
+     * @mbg.generated
+     */
+    private String value;
+
+    /**
+     * 描述
+     *
+     * @mbg.generated
+     */
+    private String remark;
+
+    /**
+     * 状态：0-停用 1-启用
+     *
+     * @mbg.generated
+     */
+    private String status;
+
+    /**
+     * 修改时间
+     *
+     * @mbg.generated
+     */
+    private Date update_time;
+
+    /**
+     * 创建时间
+     *
+     * @mbg.generated
+     */
+    private Date create_time;
+
+    private static final long serialVersionUID = 1L;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getUpdate_time() {
+        return update_time;
+    }
+
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        PayConfig other = (PayConfig) that;
+        return (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getValue() == null ? other.getValue() == null : this.getValue().equals(other.getValue()))
+            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+            && (this.getUpdate_time() == null ? other.getUpdate_time() == null : this.getUpdate_time().equals(other.getUpdate_time()))
+            && (this.getCreate_time() == null ? other.getCreate_time() == null : this.getCreate_time().equals(other.getCreate_time()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getValue() == null) ? 0 : getValue().hashCode());
+        result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        result = prime * result + ((getUpdate_time() == null) ? 0 : getUpdate_time().hashCode());
+        result = prime * result + ((getCreate_time() == null) ? 0 : getCreate_time().hashCode());
+        return result;
+    }
+}

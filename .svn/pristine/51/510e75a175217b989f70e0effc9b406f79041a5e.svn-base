@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>系统设置</title>
+		<link rel="stylesheet" href="../plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="../css/global.css" media="all">
+		<link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/table.css" />
+	</head>
+
+	<body>
+		<div class="admin-main">
+
+		</div>
+
+		<script type="text/javascript" src="../plugins/layui/layui.js"></script>
+		<script>
+			layui.config({
+				base: '../js/'
+			});
+		</script>
+	</body>
+
+</html>

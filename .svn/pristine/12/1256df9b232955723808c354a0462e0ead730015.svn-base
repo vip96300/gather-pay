@@ -1,0 +1,9 @@
+package java.org.xxpay.service;
+
+/**
+ * @Author huanghongfei
+ * @Description
+ * @Date Create in 11:51 2018/2/26
+ */
+public class PayOrderServiceTest {
+}

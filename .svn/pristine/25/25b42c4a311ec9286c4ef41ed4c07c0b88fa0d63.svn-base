@@ -1,0 +1,75 @@
+package org.xxpay.mgr.service;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.xxpay.dal.dao.mapper.SysPermissionMapper;
+import org.xxpay.dal.dao.mapper.SysRoleMapper;
+import org.xxpay.dal.dao.model.SysPermission;
+import org.xxpay.dal.dao.model.SysRole;
+import org.xxpay.mgr.utils.UuidUtil;
+
+import java.util.List;
+
+/**
+ * Created by dingzhiwei on 17/5/4.
+ */
+@Service
+public class MchInfoService {
+
+    @Autowired
+    private MchInfoMapper mchInfoMapper;
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
+    @Autowired
+    private SysPermissionMapper sysPermissionMapper;
+
+    public MchInfo getByUsername(String username){
+    	MchInfo mchInfo=mchInfoMapper.selectByUsername(username);
+    	List<SysRole> roles=sysRoleMapper.selectByMchid(mchInfo.getMchId());
+    	for(SysRole role:roles){
+    		List<SysPermission> permissions=sysPermissionMapper.selectByRoleId(role.getId());
+    		role.setPermissions(permissions);
+    	}
+    	mchInfo.setRoles(roles);
+    	return mchInfo;
+    }
+
+    public void saveOrUpdate(MchInfo mchInfo) {
+        if(org.springframework.util.StringUtils.isEmpty(mchInfo.getMchId())) {
+            mchInfo.setMchId(UuidUtil.idGennerator());
+            mchInfoMapper.insert(mchInfo);
+        }else{
+            mchInfoMapper.updateByPrimaryKeySelective(mchInfo);
+        }
+    }
+
+    public MchInfo selectMchInfo(String mchId) {
+        return mchInfoMapper.selectByPrimaryKey(mchId);
+    }
+
+    public List<MchInfo> getMchInfoList(int offset, int limit, MchInfo mchInfo) {
+        MchInfoExample example = new MchInfoExample();
+        example.setOrderByClause("createTime DESC");
+        example.setOffset(offset);
+        example.setLimit(limit);
+        MchInfoExample.Criteria criteria = example.createCriteria();
+        setCriteria(criteria, mchInfo);
+        return mchInfoMapper.selectByExample(example);
+    }
+
+    public Integer count(MchInfo mchInfo) {
+        MchInfoExample example = new MchInfoExample();
+        MchInfoExample.Criteria criteria = example.createCriteria();
+        setCriteria(criteria, mchInfo);
+        return mchInfoMapper.countByExample(example);
+    }
+
+    void setCriteria(MchInfoExample.Criteria criteria, MchInfo mchInfo) {
+        if(mchInfo != null) {
+            if(StringUtils.isNotBlank(mchInfo.getMchId())) criteria.andMchIdEqualTo(mchInfo.getMchId());
+            if(mchInfo.getType() != null && !"-99".equals(mchInfo.getType())) criteria.andTypeEqualTo(mchInfo.getType());
+        }
+    }
+
+}

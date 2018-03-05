@@ -1,0 +1,58 @@
+package org.xxpay.mgr.controller;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.xxpay.common.util.DateUtil;
+import org.xxpay.dal.dao.model.MchCash;
+import org.xxpay.dal.dao.model.MchInfo;
+import org.xxpay.dal.dao.plugin.PageModel;
+import org.xxpay.mgr.constant.PageConstants;
+import org.xxpay.mgr.service.MchCashService;
+
+import java.util.List;
+
+/**
+ * @Author huanghongfei
+ * @Description
+ * @Date Create in 18:02 2018/3/2
+ */
+@RequestMapping(value="/mch_cash")
+@Controller
+public class MchCashController {
+
+    @Autowired
+    private MchCashService mchCashService;
+
+    @RequestMapping(value="/list_mchId.html")
+    public String list_mchId_html(){
+        return "/mch_cash/list_mchId";
+    }
+
+    @RequestMapping(value="/list_mchId")
+    public PageModel list_mchId(@RequestParam(name="mchId")String mchId,
+                                @RequestParam(name="pageIndex")int pageIndex){
+        PageModel pageModel = new PageModel();
+        long count = mchCashService.countByMchId(mchId);
+        if(count <= 0) return pageModel;
+        List<MchCash> mchCashList = mchCashService.listByMchId(mchId, pageIndex, PageConstants.DEFAULT_SIZE);
+        if(!CollectionUtils.isEmpty(mchCashList)) {
+            JSONArray array = new JSONArray();
+            for(MchCash mchCash : mchCashList) {
+                JSONObject object = (JSONObject) JSONObject.toJSON(mchCash);
+                object.put("createTime", DateUtil.date2Str(mchCash.getCreateTime()));
+                array.add(object);
+            }
+            pageModel.setList(array);
+        }
+        pageModel.setCount(count);
+        pageModel.setMsg("ok");
+        pageModel.setRel(true);
+        return pageModel;
+    }
+
+}

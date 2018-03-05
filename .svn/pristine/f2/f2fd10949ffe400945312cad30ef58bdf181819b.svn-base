@@ -1,0 +1,14 @@
+package org.xxpay.mgr.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * @Author huanghongfei
+ * @Description
+ * @Date Create in 18:03 2018/3/2
+ */
+@RequestMapping(value="/mch_card")
+@Controller
+public class MchCardController {
+}

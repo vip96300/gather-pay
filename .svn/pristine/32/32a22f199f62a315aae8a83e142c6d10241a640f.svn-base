@@ -1,0 +1,5 @@
+package org.xxpay.dal.dao.mapper;
+
+public class SysPermissionMapper {
+
+}

@@ -1,0 +1,39 @@
+package org.xxpay.mgr.controller;
+
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.xxpay.mgr.service.MchInfoService;
+/**
+ * 
+ * @author Administrator
+ *
+ */
+@Controller
+@RequestMapping
+public class IndexController {
+
+	private static Logger log=org.slf4j.LoggerFactory.getLogger(IndexController.class);
+	
+	@Autowired
+	private MchInfoService mchInfoService;
+	
+	@RequestMapping(value="/login.html")
+    public String loginInput(){
+    	return "login";
+    }
+
+	@RequestMapping(value="/login")
+	public String login(ModelMap model){
+		model.put("mchInfo","UserName");
+		return "index";
+	}
+	
+	
+    @RequestMapping(value="/main.html")
+    public String main(){
+    	return "main";
+    }
+}

@@ -1,0 +1,36 @@
+<div style="margin: 15px;">
+	<form class="layui-form">
+		<input type="text" name="cardId" hidden="hidden" value="${Session.mchInfo.mchId}">
+		<div class="layui-form-item">
+			<label class="layui-form-label">银行名称</label>
+			<div class="layui-input-block">
+				<input type="text" name="bankName" lay-verify="required" placeholder="请输入银行名称" autocomplete="off" class="layui-input" value="${item.bankName}">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">卡号</label>
+			<div class="layui-input-block">
+				<input type="text" name="bankNo" lay-verify="required" placeholder="请输入卡号" readonly="readonly" autocomplete="off" class="layui-input" value="${item.bankNo}">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">姓名</label>
+			<div class="layui-input-block">
+				<input type="text" name="userName" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" value="${item.userName}">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">身份证号</label>
+			<div class="layui-input-block">
+				<input type="text" name="idNo" lay-verify="required" placeholder="请输入身份证号" autocomplete="off" class="layui-input" value="${item.idNo}">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">预留手机号</label>
+			<div class="layui-input-block">
+				<input type="text" name="mobile" lay-verify="required" placeholder="请输入预留手机号" autocomplete="off" class="layui-input" value="${item.mobile}">
+			</div>
+		</div>
+		<button lay-filter="edit" lay-submit style="display: none;"></button>
+	</form>
+</div>

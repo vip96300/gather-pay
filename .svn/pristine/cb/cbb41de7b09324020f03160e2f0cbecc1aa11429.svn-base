@@ -1,0 +1,37 @@
+package org.xxpay.dal.dao.mapper;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
+import org.xxpay.dal.dao.model.PayPlatform;
+import org.xxpay.dal.dao.model.PayPlatformExample;
+
+import java.util.List;
+
+public interface PayPlatformMapper {
+    long countByExample(PayPlatformExample example);
+
+    int deleteByExample(PayPlatformExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(PayPlatform record);
+
+    int insertSelective(PayPlatform record);
+
+    List<PayPlatform> selectByExample(PayPlatformExample example);
+
+    PayPlatform selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") PayPlatform record, @Param("example") PayPlatformExample example);
+
+    int updateByExample(@Param("record") PayPlatform record, @Param("example") PayPlatformExample example);
+
+    int updateByPrimaryKeySelective(PayPlatform record);
+
+    int updateByPrimaryKey(PayPlatform record);
+
+    @Select("SELECT p.* FROM `t_pay_config` c LEFT JOIN t_pay_platform p on c.`value` = p.id WHERE c.`status` = 1 AND p.`status` = 1 AND c.`code` = #{cfgCode,jdbcType=VARCHAR} LIMIT 1")
+    @ResultMap("org.xxpay.dal.dao.mapper.PayPlatformMapper.BaseResultMap")
+    PayPlatform selectPlatform(String cfgCode);
+}

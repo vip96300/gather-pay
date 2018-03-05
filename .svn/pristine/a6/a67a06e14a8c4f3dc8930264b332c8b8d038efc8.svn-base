@@ -1,0 +1,29 @@
+package org.xxpay.common.constant;
+
+public enum  PayTypeEnum {
+
+    WX_MQ("pay_type_wx_mp", "微信公众号支付"),
+    WX_QR("pay_type_wx_qr", "微信二维码支付"),
+    WX_SC("pay_type_wx_sc", "微信扫码支付"),
+    WX_H5("pay_type_wx_h5", "微信H5支付"),
+    AL_QR("pay_type_al_qr", "支付宝二维码支付"),
+    AL_SC("pay_type_al_sc", "支付宝扫码支付"),
+    JD("pay_type_jd", "JD支付"),
+    QQ("pay_type_qq", "QQ钱包支付");
+
+    private String code;
+    private String name;
+
+    PayTypeEnum(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
